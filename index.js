@@ -1,5 +1,6 @@
 //opening torrent file
 const fs = require('fs');
+const bencode = require('bencode');
 
-const torrent = fs.readFileSync('neuromancer.torrent');
-console.log(torrent.toString('utf-8'));
+const torrent = bencode.decode(fs.readFileSync('neuromancer.torrent'));
+console.log(torrent.announce.toString('utf-8'));
